@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Cars List</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+        <style>
+            body {
+                background-repeat: no-repeat, repeat;
+                background-color: #cccccc;
+            }
+        </style>
+
+
+    </head>
+
+    <body>
+        <div class="container">
+
+        <div id="wrapper">
+            <div id="header">
+                 <h2>Car Directory</h2>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Add search support -->
+        <form action="#" th:action="@{search}"
+              method="GET" >
+            <input type="text" name="theName" placeholder="Search by name" style="color:grey">
+
+            <button type="submit"
+                    class="btn btn-success btn-sm">
+                Search
+            </button>
+        </form>
+
+        <!-- Add button  -->
+
+        <a th:href="@{/cars/showFormForAdd}"
+            class="btn btn-primary btn-sm mb-3">
+            Add Car
+        </a>
+
+        <table  class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Producer</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="car : ${cars}">
+                    <td th:text="${car.name}" />
+                    <td th:text="${car.producer}" />
+                    <td th:text="${car.type}" />
+                    <td>
+                        <a th:href="@{/cars/showFormForUpdate(carId=${car.id})}"
+                            class="btn btn-info btn-sm">
+                            Update
+                        </a>
+                        <a th:href="@{/cars/delete(carId=${car.id})}"
+                           class="btn btn-danger btn-sm"
+                           onclick="if (!(confirm('Are you sure you want to delete this car'))) return false">
+                            Delete
+                        </a>
+                        <a th:href="@{/cars/showCar(carId=${car.id})}"
+                           class="btn btn-warning btn-sm">
+                            View Details
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+            <form action="#" th:action="@{/logout}"
+                  method="POST" >
+                <button type="submit"
+                        class="btn btn-dark btn-sm">
+                    Logout
+                </button>
+            </form>
+
+         </div>
+
+    </body>
+
+</html>

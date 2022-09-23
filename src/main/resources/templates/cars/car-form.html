@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Save Car</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+        <div class="container">
+            <hr>
+            <p class="h4 mb-4">Save Car</p>
+
+            <form action="#" th:action="@{/cars/save}" method="POST">
+
+                <input type="hidden" th:field="${car.id}">
+
+                <input type="text" th:field="${car.name}" placeholder="Name"
+                    class="form-control mb-4 col-4">
+
+                <input type="text" th:field="${car.producer}" placeholder="Producer"
+                       class="form-control mb-4 col-4">
+
+                <input type="text" th:field="${car.type}" placeholder="Type"
+                       class="form-control mb-4 col-4">
+
+                <input type="number" th:field="${carProfile.fabricationYear}" placeholder="Fabrication Year"
+                       class="form-control mb-4 col-4">
+
+                <input type="text" th:field="${carProfile.engine}" placeholder="Engine"
+                       class="form-control mb-4 col-4">
+
+                <input type="text" th:field="${carProfile.power}" placeholder="Power"
+                       class="form-control mb-4 col-4">
+
+                <input type="number" th:field="${carProfile.price}" placeholder="Price"
+                       class="form-control mb-4 col-4">
+
+                <input type="text" th:field="${carProfile.photoLocation}" placeholder="Photo"
+                       class="form-control mb-4 col-4">
+
+                <button type="submit"
+                        class="btn btn-info col-2">
+                    Save
+                </button>
+            </form>
+
+            <hr>
+            <a th:href="@{/employees/list}">Back to Cars List</a>
+
+        </div>
+
+
+    </body>
+
+
+</html>
